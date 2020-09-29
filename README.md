@@ -86,3 +86,17 @@ WARNING: Adding a user to the "docker" group will grant the ability to run
          for more information.
 ```
 
+Habilitamos el servicio para que persista en el siguiente arranque:
+```bash
+systemctl enable docker
+```
+
+## Desactivamos firewalld y SeLinux:
+
+```bash
+systemctl disable firewalld
+systemctl stop firewalld
+sed -i 's/enforcing/disabled/g' /etc/selinux/config  #### requiere reinicio
+
+init 6 #### reiniciamos, ojo!
+```
