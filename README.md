@@ -1,4 +1,4 @@
-# Guía de instalación de Rancher en HA sobre vSphere 6.7
+# Guía de instalación de Rancher sobre vSphere 6.7
 #### Fuentes:
 https://rancher.com/docs/rancher/v2.x/en/installation/requirements/
 
@@ -99,4 +99,11 @@ systemctl stop firewalld
 sed -i 's/enforcing/disabled/g' /etc/selinux/config  #### requiere reinicio
 
 init 6 #### reiniciamos, ojo!
+```
+## Instalamos rancher en un sólo nodo con certificado autogenerado:
+
+```bash
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  rancher/rancher:latest
 ```
